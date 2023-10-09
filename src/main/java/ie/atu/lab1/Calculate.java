@@ -17,9 +17,12 @@ public class Calculate {
             return "Sum: " + result;
         } else if ("subtract".equalsIgnoreCase(operation)) {
             result = fnum - snum;
-            return "Difference: " + result;
+            return "Answer: " + result;
+        } else if ("multiply".equalsIgnoreCase(operation)) {
+            result = fnum * snum;
+            return "Answer: " + result;
         } else {
-            return "Invalid operation. Supported operations are 'add' and 'subtract'.";
+            return "Invalid";
         }
     }
 }

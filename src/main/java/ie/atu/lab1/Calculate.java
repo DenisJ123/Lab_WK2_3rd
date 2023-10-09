@@ -9,9 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class Calculate {
 
     @GetMapping("/calculate")
-    public String calculate (@RequestParam int fnum, int snum) {
-           int sum = fnum + snum;
-        return "Sum :" + sum;
-    }
+    public String calculate(@RequestParam String operation, @RequestParam int fnum, @RequestParam int snum) {
+        int result;
 
+        if ("add".equalsIgnoreCase(operation)) {
+            result = fnum + snum;
+            return "Sum: " + result;
+        } else if ("subtract".equalsIgnoreCase(operation)) {
+            result = fnum - snum;
+            return "Difference: " + result;
+        } else {
+            return "Invalid operation. Supported operations are 'add' and 'subtract'.";
+        }
+    }
 }

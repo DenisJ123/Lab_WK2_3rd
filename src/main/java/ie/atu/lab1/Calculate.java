@@ -10,7 +10,7 @@ public class Calculate {
 
     @GetMapping("/calculate")
     public String calculate(@RequestParam String operation, @RequestParam int fnum, @RequestParam int snum) {
-        int result;
+        double result;
 
         if ("add".equalsIgnoreCase(operation)) {
             result = fnum + snum;
@@ -21,8 +21,15 @@ public class Calculate {
         } else if ("multiply".equalsIgnoreCase(operation)) {
             result = fnum * snum;
             return "Answer: " + result;
+        } else if ("divide".equalsIgnoreCase(operation)) {
+            if (snum == 0) {
+                return "Cannot divide by 0";
+            }
+            result = (double) fnum / snum;
+            return "Answer: " + result;
         } else {
             return "Invalid";
         }
     }
 }
+
